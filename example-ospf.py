@@ -11,11 +11,12 @@ junos_username = "root"
 junos_password = "lab123"
 
 def load_ospf_config(host):
-    with open("ospf-{}.yaml".format(host)) as f:
+    #with open("ospf-{}.yaml".format(host)) as f:
+    with open("host_vars/{}.yml".format(host)) as f:
         vars = yaml.load(f)
     with Device(host=host, user=junos_username, passwd=junos_password, port=22) as dev:   
         with Config(dev, mode="exclusive") as conf:
-            conf.load(template_path="ospf.j2", template_vars=vars, format='text')
+            conf.load(template_path="templates/ospf.j2", template_vars=vars, format='text')
             conf.pdiff()
             if conf.diff() is not None:
                  conf.commit()

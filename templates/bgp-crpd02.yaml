@@ -1,0 +1,5 @@
+groups:
+- name: crpd
+  neighbors:
+  - address: 10.0.0.5
+  peer_as: 65001

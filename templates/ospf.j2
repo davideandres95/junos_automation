@@ -1,6 +1,6 @@
 protocols {
     ospf {
-        {% for area in areas %}
+        {% for area in ospf.areas %}
         area {{ area.id }} {
             {% for interface in area.interfaces %}
                 interface {{ interface.name }};

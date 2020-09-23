@@ -1,0 +1,11 @@
+ospf:
+  areas:
+    - id: 0.0.0.0
+      interfaces:
+        - name: crpd01_crpd02
+bgp:
+  groups:
+    - name: crpd
+      neighbors:
+        - address: 10.0.0.6
+      peer_as: 65002

@@ -1,0 +1,16 @@
+protocols {
+    bgp {
+        {% for group in bgp.groups %}
+        group {{ group.name }} {
+            {% for neighbor in group.neighbors %}
+            neighbor {{ neighbor.address }};
+            {% endfor %}
+            peer-as {{ group.peer_as }}
+            type external;
+            family inet {
+               unicast;
+            }
+        }
+        {% endfor %}
+    }
+}

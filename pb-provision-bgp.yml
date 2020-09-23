@@ -1,0 +1,31 @@
+---
+- name: Provision BGP configuration
+  hosts: crpd
+  roles:
+   - juniper.junos
+  connection: local
+  gather_facts: no
+
+  vars:
+    config_file: configs/{{ inventory_hostname }}.conf
+    diffs_file: configs/{{ inventory_hostname }}.diff
+
+  tasks:
+   - name: Generate config
+     template:
+       src: templates/bgp.j2
+       dest: "{{ config_file }}"
+
+   - name: Load config on the device
+     juniper_junos_config:
+       provider: "{{ provider }}"
+       load: merge
+       commit: true
+       src: "{{ config_file }}"
+       diffs_file: "{{ diffs_file }}"
+     register: result
+
+   - name: Print diff
+     debug: var=result.diff_lines
+     when: result.diff_lines is defined
+
