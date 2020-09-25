@@ -6,9 +6,9 @@ from jnpr.junos.op.ospf import OspfNeighborTable
 from time import sleep
 
 hosts = ["crpd01","crpd02"]
-junos_username = "root"
+junos_username = "your username" #please modify
 #junos_password = getpass("Junos OS password: ")
-junos_password = "lab123"
+junos_password = #provide your password or uncomment above line
 
 def load_ospf_config(host):
     #with open("ospf-{}.yaml".format(host)) as f:
