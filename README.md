@@ -24,7 +24,7 @@ sudo apt-get install ansible
 ansible-galaxy install juniper.junos
 ```
 
-##OSPF provisioning with PyEZ
+## OSPF provisioning with PyEZ
 Please modify the hardcoded variables as needed in *example_ospf.py*
 The ospf.j2 jinja template is stored in the /templates folder
 Variables are being loaded from the host_vars folder. Please rename according to the hostnames you are using
@@ -33,7 +33,7 @@ Finally, to run the script:
 python3 example-ospf.py
 ```
 
-##BGO provisioning with Ansible
+## BGO provisioning with Ansible
 According to ansible best practices, credentials for the devices are stored inside a provider in the *group_vars* folder for each device group listed in your *./hosts* file.
 Specific host variables are stored in *host_vars* which will be used to render the templates.
 To trigger the ansible playbook:
@@ -41,5 +41,5 @@ To trigger the ansible playbook:
 ansible-playbook pb-provision-bgp.yml
 ```
 
-##Other examples
+## Other examples
 There are two more very simple scripts in this repository. Try them out if you wish
